@@ -5,6 +5,9 @@
   "references": [
     {
       "path": "./apps/guavasure.com"
+    },
+    {
+      "path": "./apps/guavasure-embedded"
     }
   ]
 }

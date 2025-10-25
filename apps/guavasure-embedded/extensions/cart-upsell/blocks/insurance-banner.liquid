@@ -1,0 +1,285 @@
+{% comment %}
+  Pet Insurance Banner Block
+  Displays a customizable banner and opens a modal for insurance quote and purchase
+{% endcomment %}
+
+<div class="guavasure-insurance-banner" 
+     data-enabled="{{ block.settings.banner_enabled }}"
+     data-shop="{{ shop.domain }}"
+     style="
+       background: linear-gradient(135deg, {{ block.settings.primary_color }} 0%, {{ block.settings.secondary_color }} 100%);
+       color: {{ block.settings.text_color }};
+       padding: {{ block.settings.banner_padding }}px;
+       border-radius: {{ block.settings.border_radius }}px;
+       margin: {{ block.settings.banner_margin }}px 0;
+       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+     ">
+  
+  <div class="guavasure-banner-content" style="
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  ">
+    
+    <!-- Banner Icon -->
+    {% if block.settings.show_icon %}
+    <div class="guavasure-banner-icon" style="font-size: 32px; line-height: 1;">
+      {{ block.settings.banner_icon }}
+    </div>
+    {% endif %}
+    
+    <!-- Banner Text -->
+    <div class="guavasure-banner-text" style="flex: 1; min-width: 200px;">
+      <h3 style="
+        margin: 0 0 4px 0;
+        font-size: {{ block.settings.title_font_size }}px;
+        font-weight: bold;
+        color: {{ block.settings.text_color }};
+      ">
+        {{ block.settings.banner_title }}
+      </h3>
+      <p style="
+        margin: 0;
+        font-size: {{ block.settings.subtitle_font_size }}px;
+        opacity: 0.9;
+        color: {{ block.settings.text_color }};
+      ">
+        {{ block.settings.banner_subtitle }}
+      </p>
+    </div>
+    
+    <!-- CTA Button -->
+    <button 
+      class="guavasure-cta-button"
+      onclick="GuavasureInsurance.openModal()"
+      style="
+        background-color: {{ block.settings.button_color }};
+        color: {{ block.settings.button_text_color }};
+        border: none;
+        padding: 14px 28px;
+        font-size: {{ block.settings.button_font_size }}px;
+        font-weight: bold;
+        border-radius: {{ block.settings.button_border_radius }}px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        white-space: nowrap;
+      "
+      onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.25)';"
+      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.15)';"
+    >
+      {{ block.settings.button_text }}
+    </button>
+  </div>
+</div>
+
+<!-- Insurance Modal (Hidden by default) -->
+<div id="guavasure-insurance-modal" class="guavasure-modal" style="display: none;">
+  <div class="guavasure-modal-overlay" onclick="GuavasureInsurance.closeModal()"></div>
+  
+  <div class="guavasure-modal-content">
+    <!-- Close Button -->
+    <button class="guavasure-modal-close" onclick="GuavasureInsurance.closeModal()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+    
+    <!-- Progress Steps -->
+    <div class="guavasure-progress-steps">
+      <div class="guavasure-step active" data-step="1">
+        <span class="step-number">1</span>
+        <span class="step-label">Pet Details</span>
+      </div>
+      <div class="guavasure-step" data-step="2">
+        <span class="step-number">2</span>
+        <span class="step-label">Quote</span>
+      </div>
+      <div class="guavasure-step" data-step="3">
+        <span class="step-number">3</span>
+        <span class="step-label">Payment</span>
+      </div>
+      <div class="guavasure-step" data-step="4">
+        <span class="step-number">4</span>
+        <span class="step-label">Policy</span>
+      </div>
+    </div>
+    
+    <!-- Modal Body -->
+    <div id="guavasure-modal-body" class="guavasure-modal-body">
+      <!-- Content will be dynamically injected here -->
+    </div>
+  </div>
+</div>
+
+<!-- Load Modal Scripts and Styles -->
+<script src="{{ 'insurance-modal.js' | asset_url }}" defer></script>
+{{ 'insurance-modal.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Pet Insurance Banner",
+  "target": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "banner_enabled",
+      "label": "Enable Banner",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "banner_title",
+      "label": "Banner Title",
+      "default": "🛡️ Protect Your Pet Today"
+    },
+    {
+      "type": "textarea",
+      "id": "banner_subtitle",
+      "label": "Banner Subtitle",
+      "default": "Get comprehensive pet insurance coverage in minutes"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Get Instant Quote"
+    },
+    {
+      "type": "header",
+      "content": "Icon Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Show Icon",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "banner_icon",
+      "label": "Banner Icon (Emoji or Text)",
+      "default": "🐾"
+    },
+    {
+      "type": "header",
+      "content": "Color Customization"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary Color",
+      "default": "#4A90E2"
+    },
+    {
+      "type": "color",
+      "id": "secondary_color",
+      "label": "Secondary Color",
+      "default": "#50E3C2"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#4A90E2"
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Size"
+    },
+    {
+      "type": "range",
+      "id": "banner_padding",
+      "label": "Banner Padding",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "banner_margin",
+      "label": "Banner Margin",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border Radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "default": 8,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button Border Radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "default": 6,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title Font Size",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size",
+      "label": "Subtitle Font Size",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Button Font Size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    }
+  ]
+}
+{% endschema %}
+

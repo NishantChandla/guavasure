@@ -1,0 +1,90 @@
+{
+  "insurance": {
+    "banner": {
+      "title": "Protect Your Pet Today",
+      "subtitle": "Get comprehensive pet insurance coverage in minutes",
+      "button": "Get Instant Quote"
+    },
+    "modal": {
+      "steps": {
+        "petDetails": "Pet Details",
+        "quote": "Quote",
+        "payment": "Payment",
+        "policy": "Policy"
+      },
+      "petDetailsForm": {
+        "title": "Tell Us About Your Pet",
+        "subtitle": "We'll use this information to generate your personalized insurance quote",
+        "petName": "Pet's Name",
+        "petType": "Pet Type",
+        "breed": "Breed",
+        "age": "Age (years)",
+        "weight": "Weight (lbs)",
+        "vaccinated": "My pet is up-to-date with vaccinations",
+        "healthy": "My pet is in sound health (no current illnesses or injuries)",
+        "preExisting": "Pre-existing Conditions (if any)",
+        "preExistingHelp": "Separate multiple conditions with commas"
+      },
+      "quote": {
+        "title": "Your Personalized Quote",
+        "monthly": "Monthly Premium",
+        "yearly": "Annual Premium",
+        "bestValue": "Best Value",
+        "save": "Save",
+        "coverageIncludes": "Coverage Includes:",
+        "accident": "Accident Coverage",
+        "illness": "Illness Coverage",
+        "wellness": "Wellness Care",
+        "emergency": "Emergency Care",
+        "quoteId": "Quote ID",
+        "validUntil": "Valid Until"
+      },
+      "payment": {
+        "title": "Complete Your Purchase",
+        "subtitle": "Secure payment processing",
+        "summary": "Order Summary",
+        "pet": "Pet",
+        "plan": "Plan",
+        "total": "Total",
+        "email": "Email Address",
+        "cardNumber": "Card Number",
+        "expiryDate": "Expiry Date",
+        "cvv": "CVV",
+        "agreeTerms": "I agree to the terms and conditions",
+        "secureBadge": "Secure payment powered by Guavasure"
+      },
+      "policy": {
+        "title": "Policy Activated!",
+        "subtitle": "Your pet is now protected",
+        "details": "Policy Details",
+        "policyNumber": "Policy Number",
+        "coverageStart": "Coverage Start",
+        "coverageEnd": "Coverage End",
+        "transactionId": "Transaction ID",
+        "amountPaid": "Amount Paid",
+        "downloadPolicy": "Download Policy Document",
+        "emailPolicy": "Email Policy",
+        "nextSteps": "What's Next?",
+        "step1": "Check your email for policy documents",
+        "step2": "Download the Guavasure mobile app",
+        "step3": "File claims easily anytime",
+        "step4": "24/7 customer support available"
+      },
+      "buttons": {
+        "cancel": "Cancel",
+        "back": "Back",
+        "next": "Next",
+        "getQuote": "Get My Quote",
+        "choosePlan": "Choose Plan",
+        "completePurchase": "Complete Purchase",
+        "done": "Done"
+      },
+      "errors": {
+        "required": "This field is required",
+        "quoteFailed": "Failed to generate quote. Please try again.",
+        "checkoutFailed": "Failed to prepare checkout. Please try again.",
+        "paymentFailed": "Payment failed. Please try again."
+      }
+    }
+  }
+}

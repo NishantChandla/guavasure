@@ -1,0 +1,27 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "b43295d9c2bb56623fd0b9843312c76d"
+name = "guavasure"
+application_url = "https://e52e25c87fea.ngrok-free.app"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "pet-store-123456777849.myshopify.com"
+
+[webhooks]
+api_version = "2023-10"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/api/webhooks/app/uninstalled"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_customers,read_orders,read_products,write_customers,write_orders,write_products"
+
+[auth]
+redirect_urls = [
+  "https://946afa7762f7.ngrok-free.app/api/auth/callback",
+  "http://localhost:3000/api/auth/callback"
+]

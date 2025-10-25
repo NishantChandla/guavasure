@@ -1,0 +1,54 @@
+{% comment %}
+  Optional snippet for triggering the insurance modal from anywhere in your theme
+  
+  Usage:
+  {% render 'insurance-trigger', 
+    button_text: 'Insure Your Pet',
+    button_class: 'custom-btn-class',
+    show_as: 'button'  # or 'link'
+  %}
+{% endcomment %}
+
+{% liquid
+  assign trigger_text = button_text | default: 'Get Pet Insurance'
+  assign trigger_class = button_class | default: 'guavasure-trigger-btn'
+  assign display_type = show_as | default: 'button'
+%}
+
+{% if display_type == 'button' %}
+  <button 
+    class="{{ trigger_class }}"
+    onclick="GuavasureInsurance.openModal()"
+    type="button"
+    style="
+      background-color: #4A90E2;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    "
+    onmouseover="this.style.backgroundColor='#3a7bc8'"
+    onmouseout="this.style.backgroundColor='#4A90E2'"
+  >
+    {{ trigger_text }}
+  </button>
+{% else %}
+  <a 
+    href="#"
+    class="{{ trigger_class }}"
+    onclick="event.preventDefault(); GuavasureInsurance.openModal();"
+    style="
+      color: #4A90E2;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 500;
+    "
+  >
+    {{ trigger_text }}
+  </a>
+{% endif %}
+

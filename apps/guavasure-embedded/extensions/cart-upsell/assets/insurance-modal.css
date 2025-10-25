@@ -1,0 +1,698 @@
+/**
+ * Guavasure Pet Insurance Modal Styles
+ * Modern, responsive design for insurance flow
+ */
+
+/* Modal Container */
+.guavasure-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.guavasure-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.guavasure-modal-content {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  max-width: 700px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease;
+}
+
+.guavasure-modal-content::after {
+  content: '';
+  position: sticky;
+  bottom: 0;
+  display: block;
+  height: 24px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+}
+
+.guavasure-modal-content.scrolled-to-bottom::after {
+  opacity: 0;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Close Button */
+.guavasure-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.guavasure-modal-close:hover {
+  background-color: #f3f4f6;
+  color: #000;
+}
+
+/* Progress Steps */
+.guavasure-progress-steps {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 32px;
+  background: linear-gradient(135deg, #f6f8fa 0%, #e9ecef 100%);
+  border-radius: 16px 16px 0 0;
+  gap: 8px;
+}
+
+.guavasure-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  position: relative;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.guavasure-step::after {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: #d1d5db;
+  z-index: 0;
+}
+
+.guavasure-step:last-child::after {
+  display: none;
+}
+
+.guavasure-step.active,
+.guavasure-step.completed {
+  opacity: 1;
+}
+
+.step-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #d1d5db;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.guavasure-step.active .step-number {
+  background-color: #4a90e2;
+  box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.2);
+}
+
+.guavasure-step.completed .step-number {
+  background-color: #10b981;
+}
+
+.step-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+  text-align: center;
+}
+
+.guavasure-step.active .step-label {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* Modal Body */
+.guavasure-modal-body {
+  padding: 32px;
+  min-height: 300px;
+}
+
+/* Form Styles */
+.guavasure-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.guavasure-form-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0 0 8px 0;
+  color: #1f2937;
+}
+
+.guavasure-form-subtitle {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0 0 32px 0;
+}
+
+.guavasure-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.guavasure-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.guavasure-form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.guavasure-form-group input,
+.guavasure-form-group select,
+.guavasure-form-group textarea {
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.guavasure-form-group input:focus,
+.guavasure-form-group select:focus,
+.guavasure-form-group textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.guavasure-form-group small {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.guavasure-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.guavasure-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.guavasure-checkbox-label:hover {
+  background-color: #f9fafb;
+}
+
+.guavasure-checkbox-label input[type='checkbox'] {
+  margin-top: 2px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.guavasure-checkbox-label span {
+  flex: 1;
+  font-size: 14px;
+  color: #374151;
+}
+
+/* Buttons */
+.guavasure-form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.guavasure-btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.guavasure-btn-primary {
+  background-color: #4a90e2;
+  color: white;
+  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+}
+
+.guavasure-btn-primary:hover {
+  background-color: #3a7bc8;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
+  transform: translateY(-2px);
+}
+
+.guavasure-btn-secondary {
+  background-color: white;
+  color: #374151;
+  border: 2px solid #e5e7eb;
+}
+
+.guavasure-btn-secondary:hover {
+  background-color: #f9fafb;
+  border-color: #d1d5db;
+}
+
+/* Quote Display */
+.guavasure-quote-container {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.guavasure-quote-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.guavasure-quote-card {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.guavasure-premium-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 24px;
+  background: linear-gradient(135deg, #f6f8fa 0%, #e9ecef 100%);
+}
+
+.guavasure-premium-option {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  border: 2px solid #e5e7eb;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.guavasure-premium-option:hover {
+  border-color: #4a90e2;
+  box-shadow: 0 8px 24px rgba(74, 144, 226, 0.15);
+  transform: translateY(-4px);
+}
+
+.guavasure-premium-option.recommended {
+  border-color: #10b981;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+}
+
+.premium-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #10b981;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.premium-label {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.premium-price {
+  font-size: 36px;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 16px;
+}
+
+.premium-price span {
+  font-size: 16px;
+  color: #6b7280;
+  font-weight: normal;
+}
+
+.premium-savings {
+  font-size: 14px;
+  color: #10b981;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.guavasure-coverage-details {
+  padding: 24px;
+}
+
+.guavasure-coverage-details h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 16px 0;
+  color: #1f2937;
+}
+
+.coverage-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.coverage-list li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.coverage-list svg {
+  flex-shrink: 0;
+  color: #10b981;
+  margin-top: 2px;
+}
+
+.guavasure-quote-info {
+  padding: 16px 24px;
+  background-color: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.guavasure-quote-info p {
+  margin: 8px 0;
+}
+
+/* Payment Form */
+.guavasure-payment-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.guavasure-payment-summary {
+  background: linear-gradient(135deg, #f6f8fa 0%, #e9ecef 100%);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.guavasure-payment-summary h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 16px 0;
+  color: #1f2937;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.summary-row.total {
+  border-top: 2px solid #d1d5db;
+  margin-top: 8px;
+  padding-top: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.guavasure-secure-badge {
+  text-align: center;
+  padding: 12px;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #166534;
+  font-weight: 500;
+}
+
+/* Policy Display */
+.guavasure-success-container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.guavasure-success-icon {
+  margin-bottom: 24px;
+  animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.guavasure-policy-card {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 24px 0;
+  text-align: left;
+}
+
+.guavasure-policy-card h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  color: #1f2937;
+}
+
+.policy-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.policy-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.policy-label {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.policy-value {
+  font-size: 16px;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.guavasure-policy-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.guavasure-next-steps {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: left;
+}
+
+.guavasure-next-steps h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 16px 0;
+  color: #1f2937;
+}
+
+.guavasure-next-steps ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.guavasure-next-steps li {
+  font-size: 14px;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Loading State */
+.guavasure-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  font-size: 18px;
+  color: #6b7280;
+}
+
+.guavasure-loading::after {
+  content: '';
+  width: 40px;
+  height: 40px;
+  margin-top: 20px;
+  border: 4px solid #e5e7eb;
+  border-top-color: #4a90e2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .guavasure-modal-content {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .guavasure-modal-body {
+    padding: 20px;
+  }
+
+  .guavasure-progress-steps {
+    padding: 16px;
+  }
+
+  .step-label {
+    font-size: 10px;
+  }
+
+  .guavasure-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .guavasure-premium-section {
+    grid-template-columns: 1fr;
+  }
+
+  .policy-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guavasure-form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .guavasure-btn {
+    width: 100%;
+  }
+}
+
+/* Accessibility */
+.guavasure-btn:focus,
+.guavasure-form-group input:focus,
+.guavasure-form-group select:focus,
+.guavasure-form-group textarea:focus {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .guavasure-modal-overlay,
+  .guavasure-modal-close,
+  .guavasure-progress-steps,
+  .guavasure-form-actions {
+    display: none;
+  }
+
+  .guavasure-modal-content {
+    box-shadow: none;
+    max-width: 100%;
+  }
+}
