@@ -6,7 +6,7 @@
   "nx": {
     "name": "guavasure-embedded",
     "targets": {
-      "build": {
+      "api:build": {
         "executor": "@nx/esbuild:esbuild",
         "outputs": [
           "{options.outputPath}"
@@ -18,11 +18,7 @@
           "bundle": false,
           "main": "apps/guavasure-embedded/src/main.ts",
           "tsConfig": "apps/guavasure-embedded/tsconfig.app.json",
-          "assets": [
-            "apps/guavasure-embedded/src/assets",
-            "apps/guavasure-embedded/src/extensions",
-            "apps/guavasure-embedded/src/frontend"
-          ],
+          "assets": [],
           "esbuildOptions": {
             "sourcemap": true,
             "outExtension": {
@@ -76,65 +72,48 @@
         ],
         "executor": "nx:noop"
       },
-      "serve": {
+      "api:serve": {
         "continuous": true,
         "executor": "@nx/js:node",
         "defaultConfiguration": "development",
         "dependsOn": [
-          "build"
+          "api:build"
         ],
         "options": {
-          "buildTarget": "guavasure-embedded:build",
+          "buildTarget": "guavasure-embedded:api:build",
           "runBuildTargetDependencies": false
         },
         "configurations": {
           "development": {
-            "buildTarget": "guavasure-embedded:build:development"
+            "buildTarget": "guavasure-embedded:api:build:development"
           },
           "production": {
-            "buildTarget": "guavasure-embedded:build:production"
+            "buildTarget": "guavasure-embedded:api:build:production"
           }
         }
       }
     }
   },
   "dependencies": {
-    "@preact/signals": "^2.3.2",
-    "@shopify/app-bridge": "^3.7.9",
-    "@shopify/app-bridge-react": "^3.7.9",
-    "@shopify/network": "^3.3.0",
-    "@shopify/polaris": "^12.0.0",
     "@shopify/shopify-api": "^9.0.0",
     "@shopify/shopify-app-express": "^6.0.1",
-    "@shopify/theme": "^3.58.2",
-    "@shopify/ui-extensions": "2025.10.3",
     "axios": "^1.6.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "multer": "^1.4.5-lts.1",
-    "preact": "^10.27.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-fast-compare": "^3.2.2",
-    "react-transition-group": "^4.4.5"
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/multer": "^1.4.11",
-    "@types/node": "^20.10.0",
-    "@types/react": "^18.2.42",
-    "@types/react-dom": "^18.2.17",
-    "@vitejs/plugin-react": "^5.1.0",
-    "vite": "^5.4.21"
+    "@types/node": "^20.10.0"
   },
   "scripts": {
-    "dev:api": "node dist/main.js",
-    "dev:shopify:admin": "vite --config src/frontend/vite.config.ts",
-    "build:shopify:admin": "vite build --config src/frontend/vite.config.ts",
-    "build:shopify:app": "shopify app build",
-    "deploy:shopify:app": "shopify app deploy",
-    "dev:shopify:app": "shopify app dev"
+    "shopify:admin:dev": "cd src/shopify && npm run admin:dev",
+    "shopify:admin:build": "cd src/shopify && npm run admin:build",
+    "shopify:app:build": "cd src/shopify && npm run app:build",
+    "shopify:app:deploy": "cd src/shopify && npm run app:deploy",
+    "shopify:app:dev": "cd src/shopify && npm run app:dev"
   }
 }
