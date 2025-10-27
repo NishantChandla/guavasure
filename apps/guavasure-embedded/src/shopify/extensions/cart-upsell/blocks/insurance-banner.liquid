@@ -80,6 +80,18 @@
   <div class="guavasure-modal-overlay" onclick="GuavasureInsurance.closeModal()"></div>
   
   <div class="guavasure-modal-content">
+    <!-- Chat Header with Mila -->
+    <div class="guavasure-chat-header">
+      <div class="mila-avatar">🐾</div>
+      <div class="mila-info">
+        <div class="mila-name">Mila</div>
+        <div class="mila-status">
+          <span class="status-indicator"></span>
+          <span>Your Pet Insurance Assistant</span>
+        </div>
+      </div>
+    </div>
+    
     <!-- Close Button -->
     <button class="guavasure-modal-close" onclick="GuavasureInsurance.closeModal()">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -87,29 +99,9 @@
       </svg>
     </button>
     
-    <!-- Progress Steps -->
-    <div class="guavasure-progress-steps">
-      <div class="guavasure-step active" data-step="1">
-        <span class="step-number">1</span>
-        <span class="step-label">Pet Details</span>
-      </div>
-      <div class="guavasure-step" data-step="2">
-        <span class="step-number">2</span>
-        <span class="step-label">Quote</span>
-      </div>
-      <div class="guavasure-step" data-step="3">
-        <span class="step-number">3</span>
-        <span class="step-label">Payment</span>
-      </div>
-      <div class="guavasure-step" data-step="4">
-        <span class="step-number">4</span>
-        <span class="step-label">Policy</span>
-      </div>
-    </div>
-    
-    <!-- Modal Body -->
+    <!-- Chat Messages Container -->
     <div id="guavasure-modal-body" class="guavasure-modal-body">
-      <!-- Content will be dynamically injected here -->
+      <!-- Chat messages will be dynamically injected here -->
     </div>
   </div>
 </div>

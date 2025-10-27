@@ -81,12 +81,12 @@ router.post('/', async (req, res) => {
       premium: {
         monthly: premium,
         yearly: Math.round(premium * 12 * 0.9), // 10% discount on yearly
-        currency: 'USD',
+        currency: 'INR',
       },
       coverage: {
-        accidentCoverage: '$50,000',
-        illnessCoverage: '$30,000',
-        wellnessCoverage: '$2,000',
+        accidentCoverage: '₹1,00,000',
+        illnessCoverage: '₹1,00,000',
+        wellnessCoverage: '₹1,00,000',
         emergencyCare: 'Included',
       },
       validUntil: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(), // Valid for 7 days
@@ -94,7 +94,7 @@ router.post('/', async (req, res) => {
     };
 
     console.log(
-      `📋 Quote generated for ${petName} (${breed}) - $${premium}/month`
+      `📋 Quote generated for ${petName} (${breed}) - ₹${premium}/month`
     );
 
     return res.json(quote);
