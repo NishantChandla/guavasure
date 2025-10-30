@@ -23,7 +23,7 @@ A fully customizable Shopify theme extension that enables merchants to offer pet
 ## 📦 What's Included
 
 ```
-cart-upsell/
+guavasure-widget/
 ├── shopify.extension.toml    # Extension configuration
 ├── blocks/
 │   └── insurance-banner.liquid   # Main banner block (customizable via theme editor)

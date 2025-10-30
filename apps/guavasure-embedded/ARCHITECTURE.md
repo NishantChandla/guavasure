@@ -77,7 +77,7 @@ apps/guavasure-embedded/
 │   │       └── SettingsForm.tsx            # Merchant settings form
 │   │
 │   ├── extensions/                         # Shopify Extensions
-│   │   └── cart-upsell/                    # Theme App Extension
+│   │   └── guavasure-widget/                    # Theme App Extension
 │   │       ├── shopify.extension.toml      # Extension config
 │   │       │
 │   │       ├── blocks/                     # Liquid Blocks

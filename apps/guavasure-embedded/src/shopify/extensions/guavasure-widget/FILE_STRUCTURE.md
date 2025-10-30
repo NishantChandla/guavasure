@@ -3,7 +3,7 @@
 Visual overview of the complete extension structure and file relationships.
 
 ```
-cart-upsell/
+guavasure-widget/
 │
 ├── 📄 shopify.extension.toml          # Extension configuration
 │   └── Defines extension type, name, and UID
@@ -470,7 +470,7 @@ src/
     └── components/
         └── SettingsForm.tsx →   (bundled in app)
 
-extensions/cart-upsell/
+extensions/guavasure-widget/
 ├── blocks/
 │   └── insurance-banner.liquid  (no compilation needed)
 ├── assets/

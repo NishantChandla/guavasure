@@ -13,7 +13,7 @@ shopify/
 │   ├── index.html      # HTML template
 │   └── vite.config.ts  # Vite configuration
 ├── extensions/         # Shopify theme extensions
-│   └── cart-upsell/    # Cart upsell extension
+│   └── guavasure-widget/    # Cart upsell extension
 ├── package.json        # Shopify-specific dependencies
 ├── tsconfig.json       # TypeScript configuration
 ├── shopify.app.toml    # Shopify app configuration

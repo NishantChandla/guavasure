@@ -120,7 +120,7 @@ apps/guavasure-embedded/
 │   │   ├── components/           # React components
 │   │   └── vite.config.ts        # Vite config
 │   └── extensions/               # Shopify extensions
-│       └── cart-upsell/          # Cart banner extension
+│       └── guavasure-widget/          # Cart banner extension
 ├── shopify.app.toml              # Shopify app config
 ├── project.json                  # Nx project config
 ├── package.json                  # Dependencies
