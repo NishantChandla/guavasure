@@ -13,15 +13,6 @@
 
 if (!defined('ABSPATH')) exit;
 
-
-function better_wpautop($pee){
-    return wpautop($pee,false);
-}
-    
-remove_filter( 'the_content', 'wpautop' );
-add_filter( 'the_content', 'better_wpautop' , 99);
-add_filter( 'the_content', 'shortcode_unautop',100 );
-
 // Enqueue assets
 function guavasure_enqueue_scripts() {
     // Enqueue JavaScript (no jQuery dependency - using vanilla JS)
@@ -38,8 +29,7 @@ function guavasure_enqueue_scripts() {
 }
 add_action('wp_enqueue_scripts', 'guavasure_enqueue_scripts');
 
-// Add shortcode [guavasure_insurance]
-function guavasure_shortcode($atts) {
+function guavasure_insurance_shortcode($atts) {
     // Parse shortcode attributes
     $atts = shortcode_atts(array(
         'title' => 'Protect Your Pet Today',
@@ -49,14 +39,13 @@ function guavasure_shortcode($atts) {
         'text_color' => '#FFFFFF',
         'button_color' => '#FFFFFF',
         'button_text_color' => '#5423E7',
-    ), $atts);
+    ), $atts, 'guavasure_insurance');
 
     $image_url = plugins_url('assets/assets_aaa78dbbf3de43acaa5d259f4ee2e40d_f9a5631f68ed48b09eeac32b110c6783.webp', __FILE__);
 
+    // Start output buffering
     ob_start();
     ?>
-    
-    <!-- Pet Insurance Banner -->
     <div class="guavasure-insurance-banner" style="
         background-color: <?php echo esc_attr($atts['bg_color']); ?>;
         color: <?php echo esc_attr($atts['text_color']); ?>;
@@ -66,40 +55,22 @@ function guavasure_shortcode($atts) {
         overflow: hidden;
     ">
         <div class="guavasure-banner-wrapper">
-            <!-- Banner Image -->
             <div class="guavasure-banner-image">
                 <img src="<?php echo esc_url($image_url); ?>" alt="Pet Insurance" />
             </div>
-            
-            <!-- Banner Content -->
             <div class="guavasure-banner-content">
-                <!-- Banner Text -->
                 <div class="guavasure-banner-text">
-                    <h3 class="guavasure-banner-title">
-                        <?php echo esc_html($atts['title']); ?>
-                    </h3>
-                    <p class="guavasure-banner-subtitle">
-                        <?php echo esc_html($atts['subtitle']); ?>
-                    </p>
+                    <h3 class="guavasure-banner-title"><?php echo esc_html($atts['title']); ?></h3>
+                    <p class="guavasure-banner-subtitle"><?php echo esc_html($atts['subtitle']); ?></p>
                 </div>
-                
-                <!-- CTA Button -->
-                <button 
-                    class="guavasure-cta-button"
-                    onclick="GuavasureInsurance.openModal()"
-                >
-                    <?php echo esc_html($atts['button_text']); ?>
-                </button>
+                <button class="guavasure-cta-button" onclick="GuavasureInsurance.openModal()"><?php echo esc_html($atts['button_text']); ?></button>
             </div>
         </div>
     </div>
 
-    <!-- Insurance Modal (Hidden by default) -->
     <div id="guavasure-insurance-modal" class="guavasure-modal" style="display: none;">
         <div class="guavasure-modal-overlay" onclick="GuavasureInsurance.closeModal()"></div>
-        
         <div class="guavasure-modal-content">
-            <!-- Chat Header with Mila -->
             <div class="guavasure-chat-header">
                 <div class="mila-avatar">🐾</div>
                 <div class="mila-info">
@@ -110,25 +81,20 @@ function guavasure_shortcode($atts) {
                     </div>
                 </div>
             </div>
-            
-            <!-- Close Button -->
             <button class="guavasure-modal-close" onclick="GuavasureInsurance.closeModal()">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M18 6L6 18M6 6l12 12"/>
                 </svg>
             </button>
-            
-            <!-- Chat Messages Container -->
-            <div id="guavasure-modal-body" class="guavasure-modal-body">
-                <!-- Chat messages will be dynamically injected here by JavaScript -->
-            </div>
+            <div id="guavasure-modal-body" class="guavasure-modal-body"></div>
         </div>
     </div>
-    
     <?php
-    return ob_get_clean();
+
+    // Return output cleanly without <p>/<br>
+    return shortcode_unautop(ob_get_clean());
 }
-add_shortcode('guavasure_insurance', 'guavasure_shortcode');
+add_shortcode('guavasure_insurance', 'guavasure_insurance_shortcode');
 
 // Elementor widget support
 function guavasure_elementor_register_widget() {
