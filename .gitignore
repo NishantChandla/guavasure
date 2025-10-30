@@ -50,3 +50,5 @@ out
 # Environment variables
 *.env
 *.env.*
+
+apps/guavasure-embedded/src/wordpress/plugins/*.zip

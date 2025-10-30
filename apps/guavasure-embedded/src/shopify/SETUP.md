@@ -104,7 +104,7 @@ shopify/
 │   ├── vite.config.ts        # Vite configuration
 │   └── tsconfig.json         # Admin TypeScript config
 ├── extensions/               # Shopify theme extensions
-│   └── cart-upsell/         # Cart upsell extension
+│   └── guavasure-widget/         # Cart upsell extension
 ├── package.json             # Shopify dependencies
 ├── tsconfig.json            # Main TypeScript config
 ├── vite-env.d.ts           # Vite environment types

@@ -81,7 +81,7 @@ shopify/
 │   ├── App.tsx           # Main component
 │   └── index.tsx         # Entry point
 ├── extensions/           # Shopify extensions
-│   └── cart-upsell/     # Cart extension
+│   └── guavasure-widget/     # Cart extension
 ├── package.json         # Dependencies
 ├── tsconfig.json        # TypeScript config
 └── .env                 # Environment variables

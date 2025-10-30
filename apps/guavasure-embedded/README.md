@@ -96,7 +96,7 @@ apps/guavasure-embedded/
 │   │   └── vite.config.ts        # Vite config
 │   │
 │   └── extensions/               # Shopify Extensions
-│       └── cart-upsell/
+│       └── guavasure-widget/
 │           ├── blocks/
 │           │   └── insurance-banner.liquid
 │           ├── snippets/
